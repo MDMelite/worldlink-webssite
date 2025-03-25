@@ -1,0 +1,252 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <!-- Background -->
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#1a1a2e" />
+      <stop offset="100%" stop-color="#0f0f1a" />
+    </radialGradient>
+    
+    <!-- Glowing effects -->
+    <filter id="glow-purple" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <filter id="glow-yellow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Connection patterns -->
+    <pattern id="connectionPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="20" height="20" fill="none" />
+      <path d="M0,10 L20,10" stroke="rgba(100,100,255,0.1)" stroke-width="1" />
+      <path d="M10,0 L10,20" stroke="rgba(100,100,255,0.1)" stroke-width="1" />
+    </pattern>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="900" height="600" fill="url(#bgGradient)" />
+  <rect width="900" height="600" fill="url(#connectionPattern)" opacity="0.7" />
+  
+  <!-- Title -->
+  <text x="450" y="45" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">WorldLink Protocol High-Level Architecture</text>
+  
+  <!-- WorldLink Bus (Central Component) -->
+  <g transform="translate(450, 300)">
+    <!-- Central hub glow -->
+    <circle cx="0" cy="0" r="120" fill="#4B0082" opacity="0.2" filter="url(#glow-purple)" />
+    
+    <!-- Bus shape -->
+    <rect x="-110" y="-60" width="220" height="120" rx="10" ry="10" fill="#5546a3" stroke="#8A74E8" stroke-width="2" />
+    <rect x="-100" y="-50" width="200" height="100" rx="5" ry="5" fill="#3a3169" stroke="#8A74E8" stroke-width="1" />
+    
+    <!-- Central name -->
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">WorldLink Bus</text>
+    <text x="0" y="25" font-family="Arial, sans-serif" font-size="12" fill="#bebefe" text-anchor="middle">Secure Messaging Layer</text>
+    
+    <!-- Connection ports (decorative) -->
+    <circle cx="-90" cy="0" r="5" fill="#6e56e0" />
+    <circle cx="-70" cy="0" r="5" fill="#6e56e0" />
+    <circle cx="-50" cy="0" r="5" fill="#6e56e0" />
+    <circle cx="50" cy="0" r="5" fill="#6e56e0" />
+    <circle cx="70" cy="0" r="5" fill="#6e56e0" />
+    <circle cx="90" cy="0" r="5" fill="#6e56e0" />
+  </g>
+  
+  <!-- Topics (orbiting the central bus) -->
+  <!-- Topic: greeting -->
+  <g transform="translate(450, 180)">
+    <ellipse cx="0" cy="0" rx="60" ry="30" fill="#2c8054" stroke="#3DCEA7" stroke-width="2" filter="url(#glow-green)"/>
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">greeting</text>
+  </g>
+  
+  <!-- Topic: data/sensor -->
+  <g transform="translate(600, 250)">
+    <ellipse cx="0" cy="0" rx="70" ry="35" fill="#2c8054" stroke="#3DCEA7" stroke-width="2" filter="url(#glow-green)"/>
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">data/sensor</text>
+  </g>
+  
+  <!-- Topic: command/execute -->
+  <g transform="translate(320, 370)">
+    <ellipse cx="0" cy="0" rx="80" ry="35" fill="#2c8054" stroke="#3DCEA7" stroke-width="2" filter="url(#glow-green)"/>
+    <text x="0" y="5" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">command/execute</text>
+  </g>
+  
+  <!-- Agents -->
+  <!-- Agent A (Python) -->
+  <g transform="translate(200, 150)">
+    <!-- Agent circle -->
+    <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" stroke-width="2" filter="url(#glow-blue)"/>
+    <!-- Agent icon and text -->
+    <text x="0" y="-15" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Agent A</text>
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="14" fill="#b8cbf5" text-anchor="middle">(Python)</text>
+    
+    <!-- Agent manifest -->
+    <g transform="translate(80, 30)">
+      <rect x="-40" y="-25" width="80" height="50" rx="5" ry="5" fill="#a87932" stroke="#f8c174" stroke-width="1.5" filter="url(#glow-yellow)"/>
+      <text x="0" y="-5" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">Agent Manifest</text>
+      <text x="0" y="10" font-family="Arial, sans-serif" font-size="9" fill="#ffecce" text-anchor="middle">(agent.json)</text>
+    </g>
+    
+    <!-- Manifest connection -->
+    <path d="M30,20 L60,25" stroke="#ffecce" stroke-width="1.5" stroke-dasharray="5,3" />
+    
+    <!-- Connection to bus -->
+    <path d="M50,20 C120,50 180,120 340,240" stroke="#4f78cc" stroke-width="2" fill="none" />
+    <text x="180" y="120" font-family="Arial, sans-serif" font-size="12" fill="#b8cbf5" text-anchor="middle" transform="rotate(25, 180, 120)">Connect/Disconnect</text>
+    
+    <!-- Connection to topic -->
+    <path d="M50,-10 C150,20 300,50 450,180" stroke="#3DCEA7" stroke-width="2" fill="none" />
+    <text x="250" y="50" font-family="Arial, sans-serif" font-size="12" fill="#a5f0d5" text-anchor="middle" transform="rotate(10, 250, 50)">Publish Message</text>
+  </g>
+  
+  <!-- Agent B (JavaScript) -->
+  <g transform="translate(700, 150)">
+    <!-- Agent circle -->
+    <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" stroke-width="2" filter="url(#glow-blue)"/>
+    <!-- Agent icon and text -->
+    <text x="0" y="-15" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Agent B</text>
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="14" fill="#b8cbf5" text-anchor="middle">(JavaScript)</text>
+    
+    <!-- Agent manifest -->
+    <g transform="translate(-80, 30)">
+      <rect x="-40" y="-25" width="80" height="50" rx="5" ry="5" fill="#a87932" stroke="#f8c174" stroke-width="1.5" filter="url(#glow-yellow)"/>
+      <text x="0" y="-5" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">Agent Manifest</text>
+      <text x="0" y="10" font-family="Arial, sans-serif" font-size="9" fill="#ffecce" text-anchor="middle">(agent.json)</text>
+    </g>
+    
+    <!-- Manifest connection -->
+    <path d="M-30,20 L-60,25" stroke="#ffecce" stroke-width="1.5" stroke-dasharray="5,3" />
+    
+    <!-- Connection to bus -->
+    <path d="M-50,20 C-120,50 -180,120 -340,240" stroke="#4f78cc" stroke-width="2" fill="none" />
+    <text x="-180" y="120" font-family="Arial, sans-serif" font-size="12" fill="#b8cbf5" text-anchor="middle" transform="rotate(-25, -180, 120)">Connect/Disconnect</text>
+    
+    <!-- Connection to topic -->
+    <path d="M-20,40 C-60,80 -120,100 -180,150" stroke="#3DCEA7" stroke-width="2" fill="none" />
+    <text x="-100" y="100" font-family="Arial, sans-serif" font-size="12" fill="#a5f0d5" text-anchor="middle" transform="rotate(-15, -100, 100)">Receive Message</text>
+  </g>
+  
+  <!-- Agent C (Autonomous AI) -->
+  <g transform="translate(200, 450)">
+    <!-- Agent circle -->
+    <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" stroke-width="2" filter="url(#glow-blue)"/>
+    <!-- Agent icon and text -->
+    <text x="0" y="-15" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Agent C</text>
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="14" fill="#b8cbf5" text-anchor="middle">(Autonomous AI)</text>
+    
+    <!-- Agent manifest -->
+    <g transform="translate(80, -30)">
+      <rect x="-40" y="-25" width="80" height="50" rx="5" ry="5" fill="#a87932" stroke="#f8c174" stroke-width="1.5" filter="url(#glow-yellow)"/>
+      <text x="0" y="-5" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">Agent Manifest</text>
+      <text x="0" y="10" font-family="Arial, sans-serif" font-size="9" fill="#ffecce" text-anchor="middle">(agent.json)</text>
+    </g>
+    
+    <!-- Manifest connection -->
+    <path d="M30,-20 L60,-25" stroke="#ffecce" stroke-width="1.5" stroke-dasharray="5,3" />
+    
+    <!-- Connection to bus -->
+    <path d="M30,-30 C100,-40 250,-20 340,240" stroke="#4f78cc" stroke-width="2" fill="none" />
+    <text x="180" y="100" font-family="Arial, sans-serif" font-size="12" fill="#b8cbf5" text-anchor="middle" transform="rotate(-25, 180, 100)">Connect/Disconnect</text>
+    
+    <!-- Connection to topic -->
+    <path d="M50,-10 C100,-30 180,-30 320,370" stroke="#3DCEA7" stroke-width="2" fill="none" />
+    <text x="180" y="150" font-family="Arial, sans-serif" font-size="12" fill="#a5f0d5" text-anchor="middle" transform="rotate(-10, 180, 150)">Publish/Receive</text>
+  </g>
+  
+  <!-- Agent D (Custom Runtime) -->
+  <g transform="translate(700, 450)">
+    <!-- Agent circle -->
+    <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" stroke-width="2" filter="url(#glow-blue)"/>
+    <!-- Agent icon and text -->
+    <text x="0" y="-15" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">Agent D</text>
+    <text x="0" y="10" font-family="Arial, sans-serif" font-size="14" fill="#b8cbf5" text-anchor="middle">(Custom Runtime)</text>
+    
+    <!-- Agent manifest -->
+    <g transform="translate(-80, -30)">
+      <rect x="-40" y="-25" width="80" height="50" rx="5" ry="5" fill="#a87932" stroke="#f8c174" stroke-width="1.5" filter="url(#glow-yellow)"/>
+      <text x="0" y="-5" font-family="Arial, sans-serif" font-size="10" fill="#ffffff" text-anchor="middle">Agent Manifest</text>
+      <text x="0" y="10" font-family="Arial, sans-serif" font-size="9" fill="#ffecce" text-anchor="middle">(agent.json)</text>
+    </g>
+    
+    <!-- Manifest connection -->
+    <path d="M-30,-20 L-60,-25" stroke="#ffecce" stroke-width="1.5" stroke-dasharray="5,3" />
+    
+    <!-- Connection to bus -->
+    <path d="M-30,-30 C-100,-40 -250,-20 -340,240" stroke="#4f78cc" stroke-width="2" fill="none" />
+    <text x="-180" y="100" font-family="Arial, sans-serif" font-size="12" fill="#b8cbf5" text-anchor="middle" transform="rotate(25, -180, 100)">Connect/Disconnect</text>
+    
+    <!-- Connection to topic -->
+    <path d="M-40,0 C-100,-50 -240,-50 -600,250" stroke="#3DCEA7" stroke-width="2" fill="none" />
+    <text x="-300" y="100" font-family="Arial, sans-serif" font-size="12" fill="#a5f0d5" text-anchor="middle" transform="rotate(10, -300, 100)">Publish/Receive</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(45, 510)">
+    <rect x="0" y="0" width="260" height="75" rx="5" ry="5" fill="rgba(50,50,80,0.5)" stroke="#ffffff" stroke-width="1" />
+    <text x="130" y="20" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Legend</text>
+    
+    <!-- Agent legend -->
+    <circle cx="15" cy="35" r="8" fill="#2c4380" stroke="#4f78cc" stroke-width="1" />
+    <text x="35" y="40" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Agents</text>
+    
+    <!-- Bus legend -->
+    <rect x="80" y="30" width="16" height="10" fill="#5546a3" stroke="#8A74E8" stroke-width="1" />
+    <text x="105" y="40" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Bus</text>
+    
+    <!-- Topic legend -->
+    <ellipse cx="150" cy="35" rx="13" ry="7" fill="#2c8054" stroke="#3DCEA7" stroke-width="1" />
+    <text x="175" y="40" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Topics</text>
+    
+    <!-- Manifest legend -->
+    <rect x="210" y="30" width="13" height="10" rx="2" ry="2" fill="#a87932" stroke="#f8c174" stroke-width="1" />
+    <text x="235" y="40" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Manifests</text>
+    
+    <!-- Connection lines legend -->
+    <path d="M15,60 L35,60" stroke="#4f78cc" stroke-width="2" />
+    <text x="60" y="65" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Connect</text>
+    
+    <path d="M100,60 L120,60" stroke="#3DCEA7" stroke-width="2" />
+    <text x="150" y="65" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Messaging</text>
+    
+    <path d="M180,60 L200,60" stroke="#ffecce" stroke-width="1.5" stroke-dasharray="5,3" />
+    <text x="230" y="65" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">Metadata</text>
+  </g>
+  
+  <!-- Animated pulse effect for the central bus -->
+  <circle cx="450" cy="300" r="125" fill="none" stroke="#8A74E8" stroke-width="1.5" opacity="0.5">
+    <animate attributeName="r" values="125;145;125" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="4s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Orbital animation paths (non-visible) -->
+  <path id="orbit1" d="M 0,0 a 250,80 0 1,0 1,0 z" fill="none" stroke="none" transform="translate(450, 300)" />
+  <path id="orbit2" d="M 0,0 a 220,160 0 1,1 1,0 z" fill="none" stroke="none" transform="translate(450, 300)" />
+  
+  <!-- Small animated dots to show message flow -->
+  <circle r="3" fill="#ffffff">
+    <animateMotion dur="10s" repeatCount="indefinite">
+      <mpath href="#orbit1" />
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;0" dur="10s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle r="3" fill="#ffffff">
+    <animateMotion dur="15s" repeatCount="indefinite" begin="5s">
+      <mpath href="#orbit2" />
+    </animateMotion>
+    <animate attributeName="opacity" values="0;1;0" dur="15s" repeatCount="indefinite" begin="5s" />
+  </circle>
+</svg>

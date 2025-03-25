@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f0f1a"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="900" height="600" fill="url(#bgGradient)" />
+  <circle cx="450" cy="300" r="110" fill="#4B0082" opacity="0.2" filter="url(#glow)" />
+  <rect x="340" y="240" width="220" height="120" rx="15" ry="15" fill="#5546a3" stroke="#8A74E8" stroke-width="2"/>
+  <text x="450" y="300" font-family="Arial" font-size="18" fill="white" text-anchor="middle" dominant-baseline="middle">
+    WorldLink Bus
+  </text>
+  <text x="450" y="320" font-family="Arial" font-size="12" fill="#bebefe" text-anchor="middle">
+    Secure Messaging Layer
+  </text>
+
+  <!-- Example Topic -->
+  <ellipse cx="450" cy="150" rx="70" ry="30" fill="#2c8054" stroke="#3DCEA7" stroke-width="2" filter="url(#glow)" />
+  <text x="450" y="155" font-family="Arial" font-size="14" fill="white" text-anchor="middle">greeting</text>
+
+  <!-- Example Agent A -->
+  <circle cx="180" cy="150" r="50" fill="#2c4380" stroke="#4f78cc" stroke-width="2" filter="url(#glow)" />
+  <text x="180" y="145" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Agent A</text>
+  <text x="180" y="160" font-family="Arial" font-size="10" fill="#b8cbf5" text-anchor="middle">(Python)</text>
+  <path d="M230,150 Q300,240 450,300" stroke="#4f78cc" stroke-width="2" fill="none"/>
+  <text x="280" y="220" font-family="Arial" font-size="10" fill="#b8cbf5" text-anchor="middle">Connect</text>
+
+  <!-- Animated ring -->
+  <circle cx="450" cy="300" r="130" fill="none" stroke="#8A74E8" stroke-width="1.5" opacity="0.5">
+    <animate attributeName="r" values="130;145;130" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="4s" repeatCount="indefinite" />
+  </circle>
+</svg>
