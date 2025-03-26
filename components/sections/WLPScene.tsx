@@ -1,41 +1,134 @@
-'use client';
+import React, { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Stars, Float, Text, Html } from '@react-three/drei';
+import { useControls } from 'leva';
+import * as THREE from 'three';
 
-import React from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+const GlowingBus = () => {
+  const busRef = useRef<THREE.Mesh>(null);
 
-function Scene() {
+  useFrame(({ clock }) => {
+    if (busRef.current) {
+      busRef.current.rotation.y = clock.getElapsedTime() * 0.1;
+      busRef.current.scale.setScalar(1 + Math.sin(clock.getElapsedTime() * 0.5) * 0.1);
+    }
+  });
+
   return (
-    <>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
+    <mesh ref={busRef}>
+      <torusGeometry args={[2, 0.1, 16, 100]} />
+      <meshStandardMaterial emissive="#6C5CE7" emissiveIntensity={1} />
+    </mesh>
+  );
+};
+
+const ModuleBlock = ({ color, label }) => {
+  return (
+    <Float>
       <mesh>
-        <boxGeometry />
-        <meshStandardMaterial color="hotpink" />
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color={color} />
       </mesh>
-    </>
+      <Html>
+        <div className="label">{label}</div>
+      </Html>
+    </Float>
   );
-}
+};
 
-export default function WLPScene() {
+const AgentNode = ({ radius, angle, time }) => {
+  const x = radius * Math.cos(angle + time);
+  const z = radius * Math.sin(angle + time);
+
   return (
-    <div className="relative w-full md:w-[90%] lg:w-[80%] mx-auto h-[600px] md:h-[800px]">
-      {/* Border */}
-      <div className="absolute inset-0 border-2 border-gray-700 rounded-lg pointer-events-none"></div>
-
-      {/* Left scroll margin */}
-      <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-gray-800 via-gray-700 to-transparent z-10"></div>
-
-      {/* 3D Canvas */}
-      <div className="bg-gray-950 rounded-lg overflow-hidden h-full">
-        <Canvas camera={{ position: [0, 0, 5] }}>
-          <Scene />
-          <OrbitControls />
-        </Canvas>
-      </div>
-
-      {/* Right scroll margin */}
-      <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-gray-800 via-gray-700 to-transparent z-10"></div>
-    </div>
+    <mesh position={[x, 0, z]}>
+      <sphereGeometry args={[0.2, 32, 32]} />
+      <meshStandardMaterial color="white" />
+    </mesh>
   );
-}
+};
+
+const DataArc = () => {
+  // WIP: Placeholder for connecting points
+  return (
+    <mesh>
+      <lineSegments>
+        <bufferGeometry attach="geometry">
+          <bufferAttribute
+            attachObject={['attributes', 'position']}
+            array={new Float32Array([0, 0, 0, 1, 1, 1])}
+            count={2}
+            itemSize={3}
+          />
+        </bufferGeometry>
+        <lineBasicMaterial attach="material" color="#ffffff" />
+      </lineSegments>
+    </mesh>
+  );
+};
+
+const WorldLinkScene = () => {
+  const { autoRotate, moduleScale, agentCount, showAgents, showArcs } = useControls({
+    autoRotate: true,
+    moduleScale: 1,
+    agentCount: 5,
+    showAgents: true,
+    showArcs: true,
+  });
+
+  const moduleColors = {
+    core: '#00CEC9',
+    sec: '#D63031',
+    async: '#FDCB6E',
+    mon: '#0984E3',
+    trust: '#6AB04C',
+    lite: '#E84393',
+  };
+
+  return (
+    <Canvas camera={{ position: [0, 0, 10] }}>
+      <OrbitControls autoRotate={autoRotate} />
+      <ambientLight color="#A29BFE" intensity={0.5} />
+      <pointLight color="#74B9FF" position={[10, 10, 10]} />
+      <Stars />
+
+      <Float>
+        <GlowingBus />
+      </Float>
+
+      <group scale={moduleScale}>
+        <ModuleBlock color={moduleColors.core} label="WLP-Core" />
+        <ModuleBlock color={moduleColors.sec} label="WLP-Sec" />
+        <ModuleBlock color={moduleColors.async} label="WLP-Async" />
+        <ModuleBlock color={moduleColors.mon} label="WLP-Mon" />
+        <ModuleBlock color={moduleColors.trust} label="WLP-Trust" />
+        <ModuleBlock color={moduleColors.lite} label="WLP-Lite" />
+      </group>
+
+      {showAgents && (
+        <group>
+          {[...Array(agentCount)].map((_, i) => (
+            <AgentNode
+              key={i}
+              radius={4}
+              angle={(i / agentCount) * Math.PI * 2}
+              time={useFrame().clock.elapsedTime * 0.2}
+            />
+          ))}
+        </group>
+      )}
+
+      {showArcs && (
+        <group>
+          <DataArc />
+        </group>
+      )}
+
+      <Text position={[0, 3, 0]} fontSize={1} color="white" anchorX="center" anchorY="middle">
+        WorldLink Protocol
+      </Text>
+    </Canvas>
+  );
+};
+
+export default WorldLinkScene;
