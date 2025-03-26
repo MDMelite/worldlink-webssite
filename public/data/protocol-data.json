@@ -1,0 +1,204 @@
+// public/data/protocol-data.json
+{
+    "modules": [
+      {
+        "id": "wlp-core",
+        "name": "WLP-Core",
+        "description": "Core messaging protocol with packet standardization for all AI-to-AI communications.",
+        "position": [0, 0, 0],
+        "color": "#5546a3",
+        "ports": {
+          "input": 4,
+          "output": 4
+        },
+        "connections": ["wlp-sec", "wlp-async", "wlp-mon"]
+      },
+      {
+        "id": "wlp-sec",
+        "name": "WLP-Sec",
+        "description": "Security module providing cryptographic identity verification and trust mechanisms.",
+        "position": [3, 1, 2],
+        "color": "#2c8054",
+        "ports": {
+          "input": 2,
+          "output": 2
+        },
+        "connections": ["wlp-core"]
+      },
+      {
+        "id": "wlp-async",
+        "name": "WLP-Async",
+        "description": "Asynchronous messaging extensions for non-blocking agent interactions.",
+        "position": [-3, 0.5, -1],
+        "color": "#8A2BE2",
+        "ports": {
+          "input": 3,
+          "output": 3
+        },
+        "connections": ["wlp-core", "wlp-mon"]
+      },
+      {
+        "id": "wlp-mon",
+        "name": "WLP-Mon",
+        "description": "Monitoring and observability layer for diagnosing network activity.",
+        "position": [0, -2, 3],
+        "color": "#FFD700",
+        "ports": {
+          "input": 3,
+          "output": 1
+        },
+        "connections": ["wlp-core", "wlp-async"]
+      }
+    ],
+    "agents": [
+      {
+        "id": "agent-a",
+        "name": "Agent A",
+        "type": "Python",
+        "moduleId": "wlp-core",
+        "position": [1.5, 1, 1],
+        "trustLevel": 95,
+        "status": "active"
+      },
+      {
+        "id": "agent-b",
+        "name": "Agent B",
+        "type": "JavaScript",
+        "moduleId": "wlp-sec",
+        "position": [4, 0.5, 1],
+        "trustLevel": 88,
+        "status": "active"
+      },
+      {
+        "id": "agent-c",
+        "name": "Agent C",
+        "type": "Autonomous AI",
+        "moduleId": "wlp-async",
+        "position": [-2, 1.5, -0.5],
+        "trustLevel": 75,
+        "status": "active"
+      },
+      {
+        "id": "agent-d",
+        "name": "Agent D",
+        "type": "Custom Runtime",
+        "moduleId": "wlp-mon",
+        "position": [1, -1, 4],
+        "trustLevel": 82,
+        "status": "active"
+      }
+    ],
+    "arcs": [
+      {
+        "sourceId": "wlp-core",
+        "targetId": "wlp-sec",
+        "type": "module-to-module",
+        "status": "active",
+        "dataFlowRate": 85
+      },
+      {
+        "sourceId": "wlp-core",
+        "targetId": "wlp-async",
+        "type": "module-to-module",
+        "status": "active",
+        "dataFlowRate": 70
+      },
+      {
+        "sourceId": "wlp-core",
+        "targetId": "wlp-mon",
+        "type": "module-to-module",
+        "status": "active",
+        "dataFlowRate": 60
+      },
+      {
+        "sourceId": "agent-a",
+        "targetId": "wlp-core",
+        "type": "agent-to-module",
+        "status": "active",
+        "dataFlowRate": 90
+      },
+      {
+        "sourceId": "agent-b",
+        "targetId": "wlp-sec",
+        "type": "agent-to-module",
+        "status": "active",
+        "dataFlowRate": 88
+      },
+      {
+        "sourceId": "agent-c",
+        "targetId": "wlp-async",
+        "type": "agent-to-module",
+        "status": "active",
+        "dataFlowRate": 75
+      },
+      {
+        "sourceId": "agent-d",
+        "targetId": "wlp-mon",
+        "type": "agent-to-module",
+        "status": "active",
+        "dataFlowRate": 82
+      }
+    ],
+    "manifests": [
+      {
+        "id": "wlp-core-manifest",
+        "name": "WLP-Core Manifest",
+        "description": "Core messaging protocol specification and capabilities",
+        "version": "1.0.0",
+        "timestamp": "2025-02-01T12:00:00Z",
+        "capabilities": [
+          "Standardized packet format",
+          "Message routing",
+          "Protocol negotiation",
+          "Basic trust verification"
+        ],
+        "dependencies": [],
+        "trustScore": 100
+      },
+      {
+        "id": "wlp-sec-manifest",
+        "name": "WLP-Sec Manifest",
+        "description": "Security and encryption layer for the WorldLink Protocol",
+        "version": "1.0.0",
+        "timestamp": "2025-02-01T12:00:00Z",
+        "capabilities": [
+          "Identity verification",
+          "Cryptographic signatures",
+          "Trust chain validation",
+          "Secure key exchange"
+        ],
+        "dependencies": ["wlp-core"],
+        "trustScore": 95
+      },
+      {
+        "id": "wlp-async-manifest",
+        "name": "WLP-Async Manifest",
+        "description": "Asynchronous messaging extensions",
+        "version": "1.0.0",
+        "timestamp": "2025-02-01T12:00:00Z",
+        "capabilities": [
+          "Non-blocking communication",
+          "Message queuing",
+          "Event subscriptions",
+          "Callback registration"
+        ],
+        "dependencies": ["wlp-core"],
+        "trustScore": 90
+      },
+      {
+        "id": "wlp-mon-manifest",
+        "name": "WLP-Mon Manifest",
+        "description": "Monitoring and observability layer",
+        "version": "1.0.0",
+        "timestamp": "2025-02-01T12:00:00Z",
+        "capabilities": [
+          "Message logging",
+          "Performance metrics",
+          "Network visualization",
+          "Error tracking"
+        ],
+        "dependencies": ["wlp-core", "wlp-async"],
+        "trustScore": 88
+      }
+    ]
+  }

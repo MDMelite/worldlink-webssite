@@ -69,104 +69,57 @@ export default function ProtocolOverview() {
           A modular architecture designed for intelligent systems to communicate securely and effectively.
         </p>
         
-        {/* Architecture diagram - embedded elegant SVG */}
-        <div className="w-full max-w-4xl mx-auto mb-16 p-6 bg-gray-950 rounded-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" className="w-full h-auto">
-            {/* Background */}
-            <defs>
-              <radialGradient id="bgGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
-                <stop offset="0%" stopColor="#1a1a2e" />
-                <stop offset="100%" stopColor="#0f0f1a" />
-              </radialGradient>
+        {/* Architecture diagram - multiple approaches */}
+        <div className="w-full max-w-4xl mx-auto mb-16 flex flex-col gap-4">
+          {/* Approach 1: Alternative path */}
+          <div className="p-4 border border-gray-700 rounded-lg">
+            <h3 className="text-center text-xl mb-4">Approach 1: Alternative path</h3>
+            <img 
+              src="/images/architecture-diagram.svg" 
+              alt="WorldLink Protocol Architecture"
+              className="w-full h-auto"
+            />
+          </div>
+          
+          {/* Approach 2: Simple embedded SVG */}
+          <div className="p-4 border border-gray-700 rounded-lg">
+            <h3 className="text-center text-xl mb-4">Approach 2: Simple embedded SVG</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" className="w-full h-auto">
+              <rect width="800" height="400" fill="#1a1a2e" />
+              <circle cx="400" cy="200" r="100" fill="#5546a3" stroke="#8A74E8" strokeWidth="2" />
+              <text x="400" y="205" fontSize="20" fontFamily="Arial, sans-serif" fill="white" textAnchor="middle">WorldLink Bus</text>
               
-              {/* Connection patterns */}
-              <pattern id="connectionPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <rect x="0" y="0" width="20" height="20" fill="none" />
-                <path d="M0,10 L20,10" stroke="rgba(100,100,255,0.1)" strokeWidth="1" />
-                <path d="M10,0 L10,20" stroke="rgba(100,100,255,0.1)" strokeWidth="1" />
-              </pattern>
-            </defs>
-            
-            {/* Main background */}
-            <rect width="900" height="600" fill="url(#bgGradient)" />
-            <rect width="900" height="600" fill="url(#connectionPattern)" opacity="0.7" />
-            
-            {/* Title */}
-            <text x="450" y="45" fontFamily="Arial, sans-serif" fontSize="24" fontWeight="bold" fill="#ffffff" textAnchor="middle">WorldLink Protocol High-Level Architecture</text>
-            
-            {/* WorldLink Bus (Central Component) */}
-            <g transform="translate(450, 300)">
-              {/* Bus shape */}
-              <rect x="-110" y="-60" width="220" height="120" rx="10" ry="10" fill="#5546a3" stroke="#8A74E8" strokeWidth="2" />
-              <rect x="-100" y="-50" width="200" height="100" rx="5" ry="5" fill="#3a3169" stroke="#8A74E8" strokeWidth="1" />
+              {/* Four nodes representing agents */}
+              <circle cx="200" cy="100" r="40" fill="#2c4380" stroke="#4f78cc" strokeWidth="2" />
+              <text x="200" y="105" fontSize="14" fill="white" textAnchor="middle">Agent A</text>
               
-              {/* Central name */}
-              <text x="0" y="5" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="bold" fill="#ffffff" textAnchor="middle">WorldLink Bus</text>
-              <text x="0" y="25" fontFamily="Arial, sans-serif" fontSize="12" fill="#bebefe" textAnchor="middle">Secure Messaging Layer</text>
-            </g>
-            
-            {/* Topics */}
-            <g transform="translate(450, 180)">
-              <ellipse cx="0" cy="0" rx="60" ry="30" fill="#2c8054" stroke="#3DCEA7" strokeWidth="2"/>
-              <text x="0" y="5" fontFamily="Arial, sans-serif" fontSize="14" fill="#ffffff" textAnchor="middle">greeting</text>
-            </g>
-            
-            <g transform="translate(600, 250)">
-              <ellipse cx="0" cy="0" rx="70" ry="35" fill="#2c8054" stroke="#3DCEA7" strokeWidth="2"/>
-              <text x="0" y="5" fontFamily="Arial, sans-serif" fontSize="14" fill="#ffffff" textAnchor="middle">data/sensor</text>
-            </g>
-            
-            <g transform="translate(320, 370)">
-              <ellipse cx="0" cy="0" rx="80" ry="35" fill="#2c8054" stroke="#3DCEA7" strokeWidth="2"/>
-              <text x="0" y="5" fontFamily="Arial, sans-serif" fontSize="14" fill="#ffffff" textAnchor="middle">command/execute</text>
-            </g>
-            
-            {/* Agents */}
-            <g transform="translate(200, 150)">
-              <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" strokeWidth="2"/>
-              <text x="0" y="-15" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="bold" fill="#ffffff" textAnchor="middle">Agent A</text>
-              <text x="0" y="10" fontFamily="Arial, sans-serif" fontSize="14" fill="#b8cbf5" textAnchor="middle">(Python)</text>
-            </g>
-            
-            <g transform="translate(700, 150)">
-              <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" strokeWidth="2"/>
-              <text x="0" y="-15" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="bold" fill="#ffffff" textAnchor="middle">Agent B</text>
-              <text x="0" y="10" fontFamily="Arial, sans-serif" fontSize="14" fill="#b8cbf5" textAnchor="middle">(JavaScript)</text>
-            </g>
-            
-            <g transform="translate(200, 450)">
-              <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" strokeWidth="2"/>
-              <text x="0" y="-15" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="bold" fill="#ffffff" textAnchor="middle">Agent C</text>
-              <text x="0" y="10" fontFamily="Arial, sans-serif" fontSize="14" fill="#b8cbf5" textAnchor="middle">(Autonomous AI)</text>
-            </g>
-            
-            <g transform="translate(700, 450)">
-              <circle cx="0" cy="0" r="60" fill="#2c4380" stroke="#4f78cc" strokeWidth="2"/>
-              <text x="0" y="-15" fontFamily="Arial, sans-serif" fontSize="16" fontWeight="bold" fill="#ffffff" textAnchor="middle">Agent D</text>
-              <text x="0" y="10" fontFamily="Arial, sans-serif" fontSize="14" fill="#b8cbf5" textAnchor="middle">(Custom Runtime)</text>
-            </g>
-            
-            {/* Connection lines */}
-            <path d="M250,170 C300,200 350,250 400,260" stroke="#4f78cc" strokeWidth="2" fill="none" />
-            <path d="M650,170 C600,200 550,250 500,260" stroke="#4f78cc" strokeWidth="2" fill="none" />
-            <path d="M250,430 C300,400 350,350 400,340" stroke="#4f78cc" strokeWidth="2" fill="none" />
-            <path d="M650,430 C600,400 550,350 500,340" stroke="#4f78cc" strokeWidth="2" fill="none" />
-            
-            {/* Legend */}
-            <g transform="translate(45, 510)">
-              <rect x="0" y="0" width="260" height="75" rx="5" ry="5" fill="rgba(50,50,80,0.5)" stroke="#ffffff" strokeWidth="1" />
-              <text x="130" y="20" fontFamily="Arial, sans-serif" fontSize="12" fontWeight="bold" fill="#ffffff" textAnchor="middle">Legend</text>
+              <circle cx="600" cy="100" r="40" fill="#2c4380" stroke="#4f78cc" strokeWidth="2" />
+              <text x="600" y="105" fontSize="14" fill="white" textAnchor="middle">Agent B</text>
               
-              <circle cx="15" cy="35" r="8" fill="#2c4380" stroke="#4f78cc" strokeWidth="1" />
-              <text x="35" y="40" fontFamily="Arial, sans-serif" fontSize="12" fill="#ffffff">Agents</text>
+              <circle cx="200" cy="300" r="40" fill="#2c4380" stroke="#4f78cc" strokeWidth="2" />
+              <text x="200" y="305" fontSize="14" fill="white" textAnchor="middle">Agent C</text>
               
-              <rect x="80" y="30" width="16" height="10" fill="#5546a3" stroke="#8A74E8" strokeWidth="1" />
-              <text x="105" y="40" fontFamily="Arial, sans-serif" fontSize="12" fill="#ffffff">Bus</text>
+              <circle cx="600" cy="300" r="40" fill="#2c4380" stroke="#4f78cc" strokeWidth="2" />
+              <text x="600" y="305" fontSize="14" fill="white" textAnchor="middle">Agent D</text>
               
-              <ellipse cx="150" cy="35" rx="13" ry="7" fill="#2c8054" stroke="#3DCEA7" strokeWidth="1" />
-              <text x="175" y="40" fontFamily="Arial, sans-serif" fontSize="12" fill="#ffffff">Topics</text>
-            </g>
-          </svg>
+              {/* Connection lines */}
+              <line x1="230" y1="130" x2="370" y2="170" stroke="#4f78cc" strokeWidth="2" />
+              <line x1="570" y1="130" x2="430" y2="170" stroke="#4f78cc" strokeWidth="2" />
+              <line x1="230" y1="270" x2="370" y2="230" stroke="#4f78cc" strokeWidth="2" />
+              <line x1="570" y1="270" x2="430" y2="230" stroke="#4f78cc" strokeWidth="2" />
+            </svg>
+          </div>
+          
+          {/* Approach 3: Using an iframe */}
+          <div className="p-4 border border-gray-700 rounded-lg">
+            <h3 className="text-center text-xl mb-4">Approach 3: Using an iframe</h3>
+            <iframe 
+              src="/assets/worldlink-architecture.svg" 
+              className="w-full border-0"
+              style={{ height: "400px" }}
+              title="Architecture Diagram"
+            ></iframe>
+          </div>
         </div>
         
         {/* Modules grid */}

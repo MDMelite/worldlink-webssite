@@ -69,54 +69,13 @@ export default function ProtocolDiagram() {
           A modular architecture designed for intelligent systems to communicate securely and effectively.
         </p>
         
-        {/* Simple diagram */}
+        {/* Complex SVG from file */}
         <div className="w-full max-w-4xl mx-auto mb-16 bg-gray-950 rounded-lg p-6">
-          <div className="w-full h-96 flex items-center justify-center relative">
-            {/* Central Bus */}
-            <div className="absolute w-60 h-28 rounded-lg bg-purple-800 border-2 border-purple-500 text-center flex flex-col justify-center">
-              <p className="text-white font-bold text-lg">WorldLink Bus</p>
-              <p className="text-purple-200 text-sm">Secure Messaging Layer</p>
-            </div>
-            
-            {/* Agent A */}
-            <div className="absolute top-8 left-24 w-32 h-32 rounded-full bg-blue-800 border-2 border-blue-500 flex flex-col justify-center items-center">
-              <p className="text-white font-bold">Agent A</p>
-              <p className="text-blue-200 text-sm">(Python)</p>
-            </div>
-            
-            {/* Agent B */}
-            <div className="absolute top-8 right-24 w-32 h-32 rounded-full bg-blue-800 border-2 border-blue-500 flex flex-col justify-center items-center">
-              <p className="text-white font-bold">Agent B</p>
-              <p className="text-blue-200 text-sm">(JavaScript)</p>
-            </div>
-            
-            {/* Agent C */}
-            <div className="absolute bottom-8 left-24 w-32 h-32 rounded-full bg-blue-800 border-2 border-blue-500 flex flex-col justify-center items-center">
-              <p className="text-white font-bold">Agent C</p>
-              <p className="text-blue-200 text-sm">(Autonomous AI)</p>
-            </div>
-            
-            {/* Agent D */}
-            <div className="absolute bottom-8 right-24 w-32 h-32 rounded-full bg-blue-800 border-2 border-blue-500 flex flex-col justify-center items-center">
-              <p className="text-white font-bold">Agent D</p>
-              <p className="text-blue-200 text-sm">(Custom Runtime)</p>
-            </div>
-            
-            {/* Topic 1 */}
-            <div className="absolute top-32 w-36 h-16 rounded-3xl bg-green-800 border-2 border-green-500 flex items-center justify-center">
-              <p className="text-white">greeting</p>
-            </div>
-            
-            {/* Topic 2 */}
-            <div className="absolute right-40 top-1/2 transform -translate-y-1/2 w-36 h-16 rounded-3xl bg-green-800 border-2 border-green-500 flex items-center justify-center">
-              <p className="text-white">data/sensor</p>
-            </div>
-            
-            {/* Topic 3 */}
-            <div className="absolute left-40 top-1/2 transform -translate-y-1/2 w-48 h-16 rounded-3xl bg-green-800 border-2 border-green-500 flex items-center justify-center">
-              <p className="text-white">command/execute</p>
-            </div>
-          </div>
+          <img 
+            src="/images/architecture-diagram.svg" 
+            alt="WorldLink Protocol Architecture"
+            className="w-full h-auto"
+          />
         </div>
         
         {/* Modules grid */}

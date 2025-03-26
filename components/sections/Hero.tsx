@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 export default function Hero() {
   const [protocolMode, setProtocolMode] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   
   useEffect(() => {
     // Check for ?protocolMode=true in URL
@@ -20,13 +21,26 @@ export default function Hero() {
         protocolMode ? 'bg-black' : 'bg-gray-900'
       }`}
     >
-      {/* Background */}
+      {/* Video Background */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 opacity-70"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 opacity-80 z-10"></div>
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute w-full h-full object-contain"
+          onCanPlay={(e) => {
+            e.currentTarget.playbackRate = 0.5; // 10% of original speed
+            setVideoLoaded(true);
+          }}
+        >
+          <source src="/videos/worldlink-background.mp4" type="video/mp4" />
+        </video>
       </div>
       
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
+      <div className="relative z-20 max-w-5xl mx-auto text-center">
         <div className="inline-flex items-center px-3 py-1 mb-8 text-xs font-medium bg-gray-800 rounded-full">
           <span className="mr-2 h-2 w-2 bg-green-400 rounded-full animate-pulse"></span>
           <span className="text-gray-300">Version 1.0.0</span>
@@ -61,7 +75,7 @@ export default function Hero() {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M7 10L12 15L17 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
